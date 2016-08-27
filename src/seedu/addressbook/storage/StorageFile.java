@@ -42,6 +42,12 @@ public class StorageFile {
             super(message);
         }
     }
+    
+    public static class StorageFileNotFoundException extends Exception {
+        public StorageFileNotFoundException(String message){
+            super(message);
+        }
+    }
 
     private final JAXBContext jaxbContext;
 
