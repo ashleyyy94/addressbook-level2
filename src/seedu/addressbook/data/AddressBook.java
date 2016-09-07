@@ -5,9 +5,11 @@ import seedu.addressbook.data.person.UniquePersonList.*;
 import seedu.addressbook.data.tag.UniqueTagList;
 import seedu.addressbook.data.tag.UniqueTagList.*;
 import seedu.addressbook.data.tag.Tag;
+import seedu.addressbook.data.tag.Tagging;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,6 +24,7 @@ public class AddressBook {
 
     private final UniquePersonList allPersons;
     private final UniqueTagList allTags; // can contain tags not attached to any person
+    private List<Tagging> taggings;
 
     /**
      * Creates an empty address book.
@@ -142,5 +145,22 @@ public class AddressBook {
      */
     public UniqueTagList getAllTags() {
         return new UniqueTagList(allTags);
+    }
+    
+    /**
+     * Adds a Tagging record when a person is tagged.
+     * @param symbol either '+' for add or '-' for delete
+     * @param person the person tagged
+     * @param tag the tag the person is tagged with
+     */
+    public void addTaggingRecord(String symbol, Tag tag, Person person) {
+        taggings.add(new Tagging(symbol, tag, person));
+    }
+    
+    /**
+     * Returns the list of Taggings stored in the address book.
+     */
+    public List<Tagging> getTaggingRecords() {
+        return taggings;
     }
 }
